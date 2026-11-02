@@ -1,0 +1,43 @@
+{
+  "template": "https://github.com/backofficedev/cookiecutter_chartbook",
+  "commit": "9eebbda0b314cc9d95065cfd70904898a5f5731c",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "p05_lou_polk_skouras_2019",
+      "project_slug": "p05_lou_polk_skouras_2019",
+      "project_description": "Automated data replication pipeline for A tug of war: Overnight versus intraday expected returns (https://www.sciencedirect.com/science/article/abs/pii/S0304405X19300650?via%3Dihub)",
+      "author_name": "Your Name",
+      "author_email": "hoangsp@uchicago.edu",
+      "python_version": "3.12",
+      "environment_manager": "pip",
+      "include_latex_reports": true,
+      "include_jupyter_notebooks": true,
+      "include_r_scripts": false,
+      "include_stata_scripts": false,
+      "include_chartbook": true,
+      "include_github_actions": true,
+      "include_fred": false,
+      "include_fed_yield_curve": false,
+      "include_ofr_api": false,
+      "include_bloomberg": false,
+      "include_crsp_stock": false,
+      "include_crsp_compustat": false,
+      "_copy_without_render": [
+        "*.bst",
+        "*.sty",
+        "*.eps",
+        "*.ipe",
+        "*.png",
+        "*.pdf",
+        "*.tex",
+        "*.bib",
+        ".github/workflows/*.yml",
+        ".claude/skills/*/*.md"
+      ],
+      "_template": "https://github.com/backofficedev/cookiecutter_chartbook",
+      "_commit": "9eebbda0b314cc9d95065cfd70904898a5f5731c"
+    }
+  },
+  "directory": null
+}
