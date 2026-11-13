@@ -21,11 +21,11 @@ We build one `doit` pipeline with three layers: replication, update, and extensi
 | Layer | Exhibit / output | Data (WRDS unless noted) | Planned scripts |
 | --- | --- | --- | --- |
 | Decomposition | Firm-day and firm-month overnight/intraday returns; month = product of daily legs; open missing → hold to next open | CRSP daily (`dlyopen`, `dlyprc`, `dlyret`, shares, volume) | `pull_crsp.py` → `clean_overnight_intraday.py` |
-| Replication | Table 1: 10–1 sorts on last month's overnight / intraday return | Same + Ken French factors (CAPM, FF3) | `table1_persistence.py` |
-| Replication | Fig. 2: t-stats for the 4 persistence/reversal tests at lags 1–60 | Same | `fig2_lag_tstats.py` |
-| Replication | Table 2: overnight vs intraday CAPM alphas for CRSP + strategies | CRSP, Compustat (BM, ROE, INV, ISSUE, ACCRUALS), I/B/E/S (SUE) | `pull_compustat.py`, `build_strategies.py`, `table2_strategies.py` |
-| Replication | Figs. 1 and 3: dollar-volume share by 30-min bucket; Fig. 3 split into <$5k vs >$50k trades, 1993–2000 | TAQ, aggregated to 13 buckets on WRDS before download | `pull_taq_buckets.py`, `fig1_fig3_volume.py` |
-| Update | Same exhibits for 1993–2025, plus 2014–2025 on its own; one sentence per exhibit on whether the result held | Same | Same scripts; only `END_DATE` changes |
+| Replication | Table 1: 10–1 sorts on last month's overnight / intraday return | CRSP daily (as above); Ken French factors (Mkt-RF, SMB, HML, RF) from WRDS `ff.factors_monthly` | `table1_persistence.py` |
+| Replication | Fig. 2: t-stats for the 4 persistence/reversal tests at lags 1–60 | CRSP daily + Ken French factors (as in Table 1) | `fig2_lag_tstats.py` |
+| Replication | Table 2: overnight vs intraday CAPM alphas for CRSP + strategies | CRSP, Compustat (BM, ROE, INV, ISSUE, ACCRUALS) merged via CCM link (`crsp.ccmxpf_lnkhist`), I/B/E/S (SUE) via `wrdsapps.ibcrsphist` | `pull_compustat.py`, `build_strategies.py`, `table2_strategies.py` |
+| Replication | Figs. 1 and 3: dollar-volume share by 30-min bucket; Fig. 3 split into <$5k vs >$50k trades, 1993–2000 | TAQ: Monthly TAQ (`taq`) for 1993–2003, Daily TAQ (`taqm_*`) after; aggregated to 13 buckets on WRDS before download | `pull_taq_buckets.py`, `fig1_fig3_volume.py` |
+| Update | Same exhibits for 1993–2025, plus 2014–2025 on its own (Fig. 3 stays 1993–2000); one sentence per exhibit on whether the result held | CRSP daily, Ken French, Compustat/CCM, I/B/E/S, TAQ, extended to 2025 | Same scripts; only `END_DATE` changes |
 | Extension | **Tug-of-war factor library and monitor** (below) | Outputs of the layers above | `build_factor_legs.py`, `tugofwar_oos.py`, notebook |
 
 **Extension: a tug-of-war factor library and monitor.**
